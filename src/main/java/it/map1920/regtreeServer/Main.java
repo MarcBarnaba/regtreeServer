@@ -17,48 +17,33 @@ import javafx.stage.WindowEvent;
 public class Main extends Application {
 
 	private Stage primaryStage;
-	private AnchorPane rootLayout;
+	private AnchorPane root;
 
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Server");
+		this.primaryStage.setTitle("regtreeServer");
 		this.primaryStage.setResizable(false);
-		initRootLayout();
-		showGraficmain();
+		loadMainView();
 		setCloseAlert();
 
 	}
-
-	public void initRootLayout() {
+	
+    private void loadMainView() {
+    	
+    	root = new AnchorPane();
+        FXMLLoader loader = null;
 		try {
-			// Load root layout from fxml file.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/mapgrafica/graficmain.fxml"));
-			rootLayout = loader.load();
-
-			// Show the scene containing the root layout.
-			Scene scene = new Scene(rootLayout);
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			loader = new FXMLLoader(Main.class.getResource("/it/map1920/regtreeServer/view/MainView.fxml"));
+			root = (AnchorPane) loader.load();
+    		primaryStage.setScene(new Scene(root));
+    		primaryStage.show();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void showGraficmain() {
-		try {
-			// Load person overview.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/mapgrafica/graficmain.fxml"));
-			AnchorPane personOverview = (AnchorPane) loader.load();
-
-			// Set person overview into the center of root layout.
-			// rootLayout.setCenterShape(personOverview);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+		
+    }
 
 	private void setCloseAlert() {
 		Alert a = new Alert(Alert.AlertType.NONE);

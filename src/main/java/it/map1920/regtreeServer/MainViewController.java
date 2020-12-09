@@ -6,7 +6,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 public class MainViewController {
 
@@ -16,7 +17,11 @@ public class MainViewController {
 	@FXML
 	private Label avviato_label;
 	@FXML
-	private AnchorPane root;
+	private TextField textField;
+	@FXML
+	private HBox form;
+
+	private int port = 8080;
 
 	@FXML
 	public void initialize() {
@@ -27,14 +32,33 @@ public class MainViewController {
 			public void handle(ActionEvent event) {
 
 				new Thread(() -> {
-					new MultiServer(8080);
+
+					if (isNumeric(textField.getText())) {
+						port = Integer.parseInt(textField.getText());
+					}
+					new MultiServer(port);
+
 				}).start();
-				
+
 				avvia.setVisible(false);
+				form.setVisible(false);
+				avviato_label.setText("Server avviato sulla Port " + port + "!");
 				avviato_label.setVisible(true);
 			}
 		});
 
+	}
+
+	private boolean isNumeric(String strNum) {
+		if (strNum == null) {
+			return false;
+		}
+		try {
+			Integer.parseInt(strNum);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
 	}
 
 }
