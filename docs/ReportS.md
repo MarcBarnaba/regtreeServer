@@ -3,9 +3,7 @@
 ## Indice
 1. Introduzione
 2. Guida Installazione
-4. 00 Design
-    * Diagrammi delle classi
-    * Commenti sulle decisioni prese
+4. Diagrammi delle classi
 4. Riepilogo del test    
 5. Manuale utente
 6. Conclusioni
@@ -51,11 +49,10 @@ Il progetto utilizza la versione 14.0.1 di JavaFX, come è possibile notare dai 
 
 Per ulteriori informazioni, è possibile consultare [questa](https://openjfx.io/openjfx-docs/) pagina.
 
-## 3. Object-oriented Design
+## 3. Diagramma delle classi
 
-### Diagramma delle classi
-
- <img src="//classDiagram.jpg" width="600">
+ Il diagramma delle classi del server è molto semplice in quanto esso è una Single-View Application.
+ Per completezza è allegato l'uml della logica utilizzata nel progetto base.
 
 
 ## 4. Riepilogo del test 
@@ -124,7 +121,3 @@ Le impostazioni permettono di scegliere se visualizzare la schermata di benvenut
 ![Preferences](/docs/screenshots/userguide/Settings.png "Preferences")
 
 
-
-
-
-## 6. Conclusioni
